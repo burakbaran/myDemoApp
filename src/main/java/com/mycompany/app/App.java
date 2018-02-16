@@ -79,7 +79,7 @@ public class App
          System.out.println(inputList);
 
 
-          String input2 = req.queryParams("input2").replaceAll("\\s","");
+          String input2 = req.queryParams("input2");
           java.util.Scanner sc2 = new java.util.Scanner(input2);
           sc2.useDelimiter("[;\r\n]+");
           java.util.ArrayList<Integer> inputList2 = new java.util.ArrayList<>();
