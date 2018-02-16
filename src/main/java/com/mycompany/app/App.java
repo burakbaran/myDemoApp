@@ -37,24 +37,24 @@ public class App
       for(int i = 0; i < min; i++){  
         int random = 0;
         if(box1 != null){
-          random = ((int) (Math.random())) * box1.size();
+          random = (int)(Math.random() * box1.size());
           posibility += box1.get(random);
         }
         if(box2 != null){
-          random = ((int) (Math.random())) * box2.size();
+          random = (int)(Math.random() * box2.size());
           posibility += box2.get(random);
         }
         if(box3 != null){
-          random = ((int) (Math.random())) * box3.size();
+          random = (int)(Math.random() * box3.size());
           posibility += box3.get(random);
         }
         if(box4 != null){
-          random = ((int) (Math.random())) * box4.size();
+          random = (int)(Math.random() * box4.size());
           posibility += box4.get(random);
         }
         posibility += " ";      
       }
-      return posibility;
+      return posibility; //returns min posibilities of keys.
     }
 
     public static void main(String[] args) {
