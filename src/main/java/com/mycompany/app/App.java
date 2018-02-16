@@ -13,6 +13,7 @@ import spark.template.mustache.MustacheTemplateEngine;
 
 public class App
 {
+
     public static boolean search(ArrayList<Integer> array, int e) {
       System.out.println("inside search");
       if (array == null) return false;
@@ -24,35 +25,39 @@ public class App
     }
     public static String giveKey(ArrayList<Integer> box1, ArrayList<Integer> box2, ArrayList<String> box3, ArrayList<String> box4){
       String posibility = "";
+      if(box1 == null || box2 == null || box3 == null || box4 == null){
+        return null;
+      }
       int min = box1.size();
-      if(box2.size() < min && box2 != null){
+      if(box2.size() < min ){
         min = box2.size();
       }
-      if(box3.size() < min && box3 != null){
+      if(box3.size() < min){
         min = box3.size();
       }      
-      if(box4.size() < min && box4 != null){
+      if(box4.size() < min){
         min = box4.size();
-      }  
+      } 
       for(int i = 0; i < min; i++){  
         int random = 0;
-        if(box1 != null){
-          random = (int)(Math.random() * box1.size());
-          posibility += box1.get(random);
+        random = (int)(Math.random() * box1.size());
+        posibility += box1.get(random);
+        
+        random = (int)(Math.random() * box2.size());
+        posibility += box2.get(random);
+    
+        random = (int)(Math.random() * box3.size());
+        posibility += box3.get(random);
+
+        random = (int)(Math.random() * box4.size());
+        posibility += box4.get(random);
+
+        if(i != min-1){
+          posibility += " ";      
         }
-        if(box2 != null){
-          random = (int)(Math.random() * box2.size());
-          posibility += box2.get(random);
+        else{
+          break;
         }
-        if(box3 != null){
-          random = (int)(Math.random() * box3.size());
-          posibility += box3.get(random);
-        }
-        if(box4 != null){
-          random = (int)(Math.random() * box4.size());
-          posibility += box4.get(random);
-        }
-        posibility += " ";      
       }
       return posibility; //returns min posibilities of keys.
     }
@@ -60,7 +65,7 @@ public class App
     public static void main(String[] args) {
         port(getHerokuAssignedPort());
 
-        get("/", (req, res) -> "Hello, World");
+        get("/", (req, res) -> "Key Generator: Please give integers in first 2 boxes and strings in last 2 boxes");
 
         post("/compute", (req, res) -> {
           //System.out.println(req.queryParams("input1"));

@@ -33,10 +33,50 @@ public class AppTest
     {
         return new TestSuite( AppTest.class );
     }
+    public void testNull(){
+    	ArrayList<Integer> array = null;
+    	ArrayList<Integer> array2 = new ArrayList<>(Arrays.asList(12));
+    	ArrayList<String> array3 = new ArrayList<>(Arrays.asList("abc","sad", "asdsad"));
+    	ArrayList<String> array4 = new ArrayList<>(Arrays.asList("ab","asdsdasda"));
+    	assertEquals(null,new App().giveKey(array,array2,array3,array4));
+    }
+    public void testMultipleNull(){
+    	ArrayList<Integer> array = null;
+    	ArrayList<Integer> array2 = new ArrayList<>(Arrays.asList(12));
+    	ArrayList<String> array3 = new ArrayList<>(Arrays.asList("abc","sad", "asdsad"));
+    	ArrayList<String> array4 = null;
+    	assertEquals(null,new App().giveKey(array,array2,array3,array4));
+    }
+    public void testString(){
+    	ArrayList<Integer> array = new ArrayList<>(Arrays.asList(111));
+    	ArrayList<Integer> array2 = new ArrayList<>(Arrays.asList(12));
+    	ArrayList<String> array3 = new ArrayList<>(Arrays.asList("abc"));
+    	ArrayList<String> array4 = new ArrayList<>(Arrays.asList("ab"));
+    	String s = "11112abcab";
+    	assertEquals(s,new App().giveKey(array,array2,array3,array4)); //because one element random is just like that
+    }
+    public void testWhiteSpace(){
+    	ArrayList<Integer> array = new ArrayList<>(Arrays.asList(13,15,22,34));
+    	ArrayList<Integer> array2 = new ArrayList<>(Arrays.asList(12,15,16));
+    	ArrayList<String> array3 = new ArrayList<>(Arrays.asList("abc","sad", "asdsad"));
+    	ArrayList<String> array4 = new ArrayList<>(Arrays.asList("ab","asdsdasda"));
+    	String s = new App().giveKey(array,array2,array3,array4);
+    	assertTrue(s.contains(" "));//there are 2 elements and there must be 1 whitespace
+    }
+    public void testNoWhiteSpace(){
+    	ArrayList<Integer> array = new ArrayList<>(Arrays.asList(13,15));
+    	ArrayList<Integer> array2 = new ArrayList<>(Arrays.asList(12));
+    	ArrayList<String> array3 = new ArrayList<>(Arrays.asList("abc","sad", "asdsad"));
+    	ArrayList<String> array4 = new ArrayList<>(Arrays.asList("ab","asdsdasda"));
+    	String s = new App().giveKey(array,array2,array3,array4);
+    	assertFalse(s.contains(" ")); //there is 1 element in array2 
+    }
 
-    /**
-     * Rigourous Test :-)
-     */
+   
+
+    /*
+      Rigourous Test :-)
+     
     public void testApp()
     {
         assertTrue( true );
@@ -59,5 +99,5 @@ public class AppTest
     public void testNull() {
       assertFalse(new App().search(null, 1));
     }
-
+	*/
 }
