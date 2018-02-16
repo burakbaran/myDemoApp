@@ -65,7 +65,7 @@ public class App
     public static void main(String[] args) {
         port(getHerokuAssignedPort());
 
-        get("/", (req, res) -> "Key Generator: Please give integers in first 2 boxes and strings in last 2 boxes");
+        get("/", (req, res) -> "Key Generator: Please add \\compute to link");
 
         post("/compute", (req, res) -> {
           //System.out.println(req.queryParams("input1"));
