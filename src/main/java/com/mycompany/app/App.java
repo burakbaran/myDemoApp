@@ -101,9 +101,9 @@ public class App
           }
           System.out.println(inputList3);
 
-          String input4 = req.queryParams("input3");
+          String input4 = req.queryParams("input4");
           java.util.Scanner sc4 = new java.util.Scanner(input4);
-          sc3.useDelimiter("[;\r\n]+");
+          sc4.useDelimiter("[;\r\n]+");
           java.util.ArrayList<String> inputList4 = new java.util.ArrayList<>();
           while (sc4.hasNext())
           {
