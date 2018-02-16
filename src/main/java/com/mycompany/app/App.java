@@ -22,6 +22,40 @@ public class App
       }
       return false;
     }
+    public static String giveKey(ArrayList<Integer> box1, ArrayList<Integer> box2, ArrayList<String> box3, ArrayList<String> box4){
+      String posibility = "";
+      int min = box1.size();
+      if(box2.size() < min && box2 != null){
+        min = box2.size();
+      }
+      if(box3.size() < min && box3 != null){
+        min = box3.size();
+      }      
+      if(box4.size() < min && box4 != null){
+        min = box4.size();
+      }  
+      for(int i = 0; i < min; i++){  
+        int random = 0;
+        if(box1 != null){
+          random = ((int) (Math.random())) * box1.size();
+          posibility += box1.get(random);
+        }
+        if(box2 != null){
+          random = ((int) (Math.random())) * box2.size();
+          posibility += box2.get(random);
+        }
+        if(box3 != null){
+          random = ((int) (Math.random())) * box3.size();
+          posibility += box3.get(random);
+        }
+        if(box4 != null){
+          random = ((int) (Math.random())) * box4.size();
+          posibility += box4.get(random);
+        }
+        posibility += " ";      
+      }
+      return posibility;
+    }
 
     public static void main(String[] args) {
         port(getHerokuAssignedPort());
@@ -40,13 +74,45 @@ public class App
             int value = Integer.parseInt(sc1.next().replaceAll("\\s",""));
             inputList.add(value);
           }
-          System.out.println(inputList);
+         
+
+         System.out.println(inputList);
 
 
           String input2 = req.queryParams("input2").replaceAll("\\s","");
-          int input2AsInt = Integer.parseInt(input2);
+          java.util.Scanner sc2 = new java.util.Scanner(input2);
+          sc2.useDelimiter("[;\r\n]+");
+          java.util.ArrayList<Integer> inputList2 = new java.util.ArrayList<>();
+          while (sc2.hasNext())
+          {
+            int value2 = Integer.parseInt(sc2.next().replaceAll("\\s",""));
+            inputList2.add(value2);
+          }
+          System.out.println(inputList2);
 
-          boolean result = App.search(inputList, input2AsInt);
+          String input3 = req.queryParams("input3");
+          java.util.Scanner sc3 = new java.util.Scanner(input3);
+          sc3.useDelimiter("[;\r\n]+");
+          java.util.ArrayList<String> inputList3 = new java.util.ArrayList<>();
+          while (sc3.hasNext())
+          {
+            String value3 = sc3.next();
+            inputList3.add(value3);
+          }
+          System.out.println(inputList3);
+
+          String input4 = req.queryParams("input3");
+          java.util.Scanner sc4 = new java.util.Scanner(input4);
+          sc3.useDelimiter("[;\r\n]+");
+          java.util.ArrayList<String> inputList4 = new java.util.ArrayList<>();
+          while (sc4.hasNext())
+          {
+            String value4 = sc4.next();
+            inputList4.add(value4);
+          }
+          System.out.println(inputList4);          
+
+          String result = App.giveKey(inputList, inputList2,inputList3,inputList4);
 
          Map map = new HashMap();
           map.put("result", result);
